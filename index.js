@@ -8,13 +8,20 @@ if (typeof requestAnimationFrame === "undefined") {
     }
 }
 
-function transformation (from, to, callback, args) {
+function transformation (from, to, callback, args, after) {
     
     var dur, easing, cv, diff, c, lastExecution, fps;
     var canceled, paused, running, stopped;
     var timeElapsed, startTime, pauseTimeElapsed, pauseStartTime;
     
     args = args || {};
+    
+    if (typeof args === "function" && !after) {
+        after = args;
+        args = {};
+    }
+    
+    after = typeof after === "function" ? after : function () {};
     
     if (typeof callback === "undefined" || !callback) {
         throw new Error("Argument callback must be a function.");
@@ -68,8 +75,8 @@ function transformation (from, to, callback, args) {
             tElapsed = elapsed();
             
             if (tElapsed > dur || stopped) {
+                
                 cv = from + diff;
-                callback(to);
                 
                 if (!stopped) {
                     stop();
@@ -115,13 +122,14 @@ function transformation (from, to, callback, args) {
         running = false;
         paused = false;
         
-        callback(easing(1) * to);
+        callback(to);
+        after();
     }
     
     function resume () {
         
         if (!paused) {
-            throw new Error("Trying to resume a timer that isn't paused.");
+            return;
         }
         
         paused = false;
@@ -138,7 +146,7 @@ function transformation (from, to, callback, args) {
     function cancel () {
         
         if (!running) {
-            throw new Error("Trying to cancel a Timer that isn't running.");
+            return;
         }
         
         elapsed();
@@ -146,6 +154,8 @@ function transformation (from, to, callback, args) {
         canceled = true;
         running = false;
         paused = false;
+        
+        after();
     }
     
     function reset () {

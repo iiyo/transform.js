@@ -9,7 +9,7 @@ Simple JavaScript transformations, e.g. for tweening, that can be paused, resume
 ## Usage
 
 ```javascript
-var t = transformation(from, to, update, options);
+var t = transformation(from, to, update, options, after);
 ```
 
 * `t`: An object with methods to control the transformation.
@@ -17,9 +17,10 @@ var t = transformation(from, to, update, options);
 * `to`: The end value.
 * `update`: A function that receives the current value of the transformation.
 * `options`: An object to configure the transformation (optional):
- * `duration`: Duration for the transformation.
- * `easing`: An easing function or name of an easing function from node package `eases`.
- * `fps`: Frames per second to use.
+  * `duration`: Duration for the transformation.
+  * `easing`: An easing function or name of an easing function from node package `eases`.
+  * `fps`: Frames per second to use.
+* `after`: Callback for when the transformation has stopped or is canceled (optional).
 
 ```javascript
 var transformation = require("transform-js").transformation;
