@@ -1,0 +1,33 @@
+{
+  "name": "transform-js",
+  "version": "1.0.0-final.1512141409",
+  "description": "Simple transformations with start/stop/pause/resume/cancel.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iiyo/transform.js.git"
+  },
+  "keywords": [
+    "transformation",
+    "animation",
+    "easing"
+  ],
+  "author": "J. Steinbeck <mail@steinbeck.it>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/iiyo/transform.js/issues"
+  },
+  "homepage": "https://github.com/iiyo/transform.js#readme",
+  "dependencies": {
+    "eases": "^1.0.8"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1"
+  }
+}
