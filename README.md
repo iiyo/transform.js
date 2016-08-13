@@ -18,7 +18,7 @@ var t = transformation(from, to, update, options, after);
 * `update`: A function that receives the current value of the transformation.
 * `options`: An object to configure the transformation (optional):
   * `duration`: Duration for the transformation.
-  * `easing`: An easing function or name of an easing function from node package `eases`.
+  * `easing`: An easing function or name of an easing function from node package [eases](https://github.com/mattdesl/eases).
   * `fps`: Frames per second to use.
 * `after`: Callback for when the transformation has stopped or is canceled (optional).
 
